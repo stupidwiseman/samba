@@ -1,6 +1,5 @@
 FROM debian:stable-slim
 
-COPY init.sh /init.sh
 COPY start.sh /start.sh
 
 RUN apt-get update && apt-get -y upgrade \
@@ -13,7 +12,6 @@ RUN apt-get update && apt-get -y upgrade \
     winbind \
     libpam-winbind \
     libnss-winbind \
-&&  /bin/sh /init.sh \
 &&  apt-get clean autoclean \
 &&  apt-get autoremove --yes \
 &&  rm -rf /var/lib/{apt,dpkg,cache,log}/ \
