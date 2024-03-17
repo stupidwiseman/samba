@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 COPY init.sh /init.sh
-COPY entrypoint.sh /entrypoint.sh
+COPY start.sh /start.sh
 
 RUN apt-get update && apt-get -y upgrade \
 &&  DEBIAN_FRONTEND=noninteractive \
@@ -19,4 +19,4 @@ RUN apt-get update && apt-get -y upgrade \
 &&  rm -rf /var/lib/{apt,dpkg,cache,log}/ \
 &&  rm -fr /tmp/* /var/tmp/*
 
-CMD [ "/bin/sh", "/entrypoint.sh" ]
+CMD [ "/bin/sh", "/start.sh" ]
